@@ -1,0 +1,120 @@
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="display: flex; justify-content: space-between; background-color: #73a1eb;">
+<h1 class="navbar-brand" href="", style="color:white;">
+  <%= link_to customer_path(@customer) do %>
+  <i class="fa fa-bank" style="font-size:30px;color:#faf5fa"></i>
+  <% end %>Bank of Innova</h1>  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  </div>
+</nav>
+
+
+
+<style>
+.container {
+    border: 27px;
+    border-radius: 12px;
+    margin: -15px;
+    width: 600px;
+    text-align: center;
+    height: fit-content;
+    left: 400px;
+    top: 130px;
+    padding: 30px;
+    position: absolute;
+    box-shadow: 0px 0px 10px #73a1eb;
+
+}
+.submit{
+  text-align: center;
+}
+
+.submit-btn{
+  background-color: #73a1eb;
+  color: #fff;
+  padding: 5px 18px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+}
+</style>
+
+<div class="container">
+<div>
+<h3> 
+<%= @fixed_deposit.fixed_deposit_name%>
+</h3>
+Rate of Interest : <%= @fixed_deposit.rate_of_interest %><br>
+Invested Amount: <%= @fixed_deposit.total_amount %><br>
+Tenure: <%= @fixed_deposit.tenure %>
+
+
+
+</div><br>
+
+<div class="submit">
+
+  <%= link_to "Calculate Maturity amount - Simple Interest", customer_fixed_deposit_maturity_amount_path ,class:"submit-btn"%>
+
+</div><br>
+
+<div class="submit">
+
+  <%= link_to "Calculate Maturity amount - Compounded Interest", customer_fixed_deposit_compound_interest_path ,class:"submit-btn"%>
+
+</div><br>
+
+<style>
+.submit{
+  text-align: center;
+}
+
+.submit-btn{
+  background-color: #73a1eb;
+  color: #fff;
+  padding: 5px 18px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+}
+</style>
+<% if request.original_fullpath == customer_fixed_deposit_maturity_amount_path %>
+  <div >
+    Maturity Amount: Rs.<%= @maturity_amount %> <br>
+    Interest Earned: Rs.<%= @interest_earned%>
+  </div>
+<% elsif request.original_fullpath == customer_fixed_deposit_compound_interest_path %>
+  <div>
+    Compounded Interest: Rs.<%= @compound_interest%> with <%= (@fixed_deposit.n).to_i%> times compounded
+  </div>
+<% end %>
+
+</div>
+
+<div>
+<p style="margin-top: 460px;
+    margin-bottom: 1rem;
+    margin-left: 100px;">
+Note:<br>
+ 
+  <ion-icon name="arrow-dropright"></ion-icon>Interest compounded on Yearly basis.<br>
+
+  <ion-icon name="arrow-dropright"></ion-icon>Maturity calculator is provided only as general self-help Planning Tools.Interest and Maturity Values are indicative only.<br>
+
+  <ion-icon name="arrow-dropright"></ion-icon>The actual maturity value will be as printed in your Fixed Deposit Receipt.<br>
+
+  <ion-icon name="arrow-dropright"></ion-icon>Maturity value of recurring deposit account
+Each deposit/installment would be considered as a separate deposit and interest would be calculated on each installment for the remaining time period.<br>
+</p>
+</div>
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: relative; bottom: 0px;width: 1381px;">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer>

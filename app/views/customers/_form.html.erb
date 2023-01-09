@@ -1,0 +1,124 @@
+
+<div class="RegisterLayout">
+    <h2>Register</h2>
+
+  <%= form_with model: @customer do |form| %>
+
+    <% if customer.errors.any? %>
+      <div style="color: red">
+        <h5><%= pluralize(customer.errors.count, "error") %> prohibited this customer profile from being saved:</h5>
+        
+          <% customer.errors.each do |error| %>
+            <%= error.full_message %><br>
+          <% end %>
+        
+      </div>
+    <% end %>
+
+  <label class="required ">Name:
+    <%= form.text_field :name, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+
+  <label class="required">Contact:
+    <%= form.telephone_field :contact, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+
+  <label class="required">Branch:
+    <%= form.text_field :branch_name, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+
+  <label class="required">Address:
+    <%= form.text_field :address, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+
+  <label class="required">City:
+    <%= form.text_field :city, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+
+  <label class="required">State:
+    <%= form.text_field :state, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+
+  <label class="required">Zip:
+    <%= form.number_field :pincode, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+  
+  <label class="required">Email:
+    <%= form.email_field :email, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+  
+  <label class="required">Password:
+    <%= form.password_field :password, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+  
+  <label class="required">Confirm Password:
+    <%= form.password_field :new_password_confirmation, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+  
+  <label class="required">Security Question:
+    <%= form.select :security_question , ["What's your first pet name? ", "What's your bestfriend's name? ","What's your favourite sport?  ", "When is your mom's birthday?", "What's your favourite holiday spot?"], style:"border-radius: 0.375rem;border: 1px solid #ced4da;"%> 
+  </label><br>
+  
+  <label class="required">Security Answer:
+    <%= form.text_field :security_answer, style:"border-radius: 0.375rem;border: 1px solid #ced4da;" %>
+  </label><br>
+
+  <div class="submit">
+    <%= form.submit "Submit", class:"submit-btn" %>
+  </div><br>
+
+  <div>
+      <p>Already have an account? <%= link_to "Login", signin_customer_path %></p>
+  </div><br><br><br>
+
+  <% end %> 
+</div>
+
+<style>
+.RegisterLayout {
+    border: none;
+    /* 0.5px solid black; */
+    border-radius: 10px;
+    background: white;
+    width: 500px;
+    height: 785px; 
+    left: 475px;
+    top: 75px;
+    padding: 30px;
+    position: absolute;
+    text-align: center;
+    box-shadow: 0px 0px 10px #73a1eb;
+}
+
+.submit{
+  text-align: center;
+}
+
+label.required:before{content:"*";color: red;}
+
+.submit-btn{
+  background-color: #73a1eb;
+  color: #fff;
+  padding: 5px 18px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+
+label{
+  display: block;
+}
+</style>
+
+
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: fixed; bottom: 0px;width: 1381px;margin-left:0px;">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer> 
+
+

@@ -1,0 +1,72 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="display: flex; justify-content: space-between; background-color: #73a1eb;">
+  <h1 class="navbar-brand" href="", style="color:white;"><i class="fa fa-bank" style="font-size:30px;color:#faf5fa"></i><strong><strong>Bank of Innova</strong></strong></h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="Navbar">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Customers", admin_customers_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Savings Accounts", admin_savings_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Fixed Deposits", admin_fds_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Sign Out", root_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  </div>
+</nav>
+
+  <div class="list">
+    <h1>Customers</h1>
+      <div>
+        <% @all_customers.each do |customer| %>
+          
+              <%= link_to customer.name, customer_profile_path(id: customer.id) %><br>
+            
+          
+        <% end %>
+      </div>
+  </div>
+
+
+<style>
+  .list{
+    text-align: center;
+    margin-top: 100px;
+    /* border: 1px solid; */
+    /* padding: 10px;
+    /* box-shadow: 5px 10px 8px #888888; */
+    /* width: 280px; */
+  }
+</style>
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: fixed; bottom: 0px;width: 1400px;">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer>

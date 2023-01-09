@@ -1,0 +1,42 @@
+<style>
+button:hover{
+  opacity: 0.7;
+}
+div {
+   margin: auto;
+        width: 60%;
+        padding: 60px;
+        background-color: rgba(242, 244, 245);
+        box-shadow: 1px 5px rgb(220, 221, 222);
+}
+body {
+  background-image: url("img.2.jpg");
+  background-color: #111111;
+}
+</style>
+<div>
+<h1>All Customers</h1>
+
+<ul>
+  <% @customers.each do |customer| %>
+    
+      <li>
+        <%= link_to customer.name, customer %> Savings account balance:<%= customer.saving_account.total_amount%>
+      </li>
+   
+  <% end %>
+</ul>
+
+<%= link_to "New customer", new_customer_path  %>
+
+</div>
+
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: fixed; bottom: 0px;width: 1400px;">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer>

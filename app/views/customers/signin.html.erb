@@ -1,0 +1,112 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="display: flex; justify-content: space-between; background-color: #73a1eb;">
+  <h1 class="navbar-brand" href="", style="color:white;position:relative;left:43%;"><i class="fa fa-bank" style="font-size:30px;color:#faf5fa"></i><strong><strong>Bank of Innova</strong></strong></h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  </div>
+</nav>
+<br>
+<br>
+<br>
+
+<style>
+  .emailLabel {
+  }
+  .signinInput{
+    border-radius: 5px;
+  }
+
+  .submit{
+    text-align: center;
+  }
+
+  .submit-btn{
+    background-color: #73a1eb;
+    color: #fff;
+    padding: 5px 18px;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+  }
+
+  .a{
+    font-weight: 300px;
+    font-style: normal;
+  }
+  
+.LoginLayout {
+    border: none;
+    /* 0.5px solid black; */
+    border-radius: 5px;
+    background: white;
+    width: 350px;
+    height: 400px;
+    left: 525px;
+    top: 130px;
+    padding: 30px;
+    position: absolute;
+    box-shadow: 0px 0px 10px #73a1eb;
+}
+
+ 
+</style>
+
+ <%= form_with url: validate_signin_path  do |form| %>
+
+      <form>
+      <fieldset>
+<div class="text-center">      
+<div class="LoginLayout" >
+      <div class="text-center">
+          <h3>Sign in</h3>
+      </div>
+      <br>
+
+    <div class="emailLabel">
+      <b><%=  form.label :email %></b> &nbsp; &nbsp; &nbsp; &nbsp;
+      <%= form.email_field :email, placeholder: "Enter email", class: "signinInput" %>
+      <% @customer.errors.full_messages_for(:email).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <br>
+
+    <div>
+    <b><%= form.label :password %></b> &nbsp;
+    <%= form.password_field :password, placeholder: "Enter password" , class: "signinInput"%>
+    <% @customer.errors.full_messages_for(:password).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="submit">
+    <%= form.submit "Sign In", class:"submit-btn"%>
+    </div>
+  <% end %> 
+
+  <br>
+
+  <div class="text-center">
+  <div class="a">New customer? <%= link_to "Register", new_customer_path %></div>
+
+  <div class="a">Forgot Password? <%= link_to "Reset", forgotpassword_customer_path %></div>
+  </div>
+  </div>
+  </div>
+</div>
+</fieldset>
+</form>
+
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: fixed; bottom: 0px;width: 1400px;">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer>

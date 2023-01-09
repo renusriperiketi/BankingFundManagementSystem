@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_of_transaction: MyString
+  total_amount: 1
+  customer: one
+  saving_account: one
+
+two:
+  type_of_transaction: MyString
+  total_amount: 1
+  customer: two
+  saving_account: two

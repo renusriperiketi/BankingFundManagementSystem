@@ -1,0 +1,130 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="display: flex; justify-content: space-between; background-color: #73a1eb;">
+  <h1 class="navbar-brand" href="", style="color:white;"><i class="fa fa-bank" style="font-size:30px;color:#faf5fa"></i><strong><strong>Bank of Innova</strong></strong></h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="Navbar">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Customers", admin_customers_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Savings Accounts", admin_savings_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Fixed Deposits", admin_fds_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Sign Out", root_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  </div>
+</nav>
+
+
+<div class="text-center", style="margin-top: 70px">
+<h3>Customer Details </h3>
+</div>
+
+
+<div class="hello">
+<table class="table table-hover", style="margin-top:30px;width:50% ">
+  <tbody>
+    <tr>
+      <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td>Account number</td>
+      <td><%= @customer.saving_account.account_number%></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td>Name</td>
+      <td> <%= @customer.name%></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td> Email</td>
+      <td> <%= @customer.email%> </td>
+    </tr>
+
+    <tr>
+    <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+    <td> Contact</td>
+    <td> <%= @customer.contact%></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td> Branch</td>
+      <td> <%= @customer.branch_name%></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td> Address</td>
+      <td> <%= @customer.address%></td>
+    </tr>
+
+    <tr>
+    <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td> City</td>
+      <td> <%= @customer.city%></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td> State </td>
+      <td> <%= @customer.state%></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td> Zip</td>
+      <td> <%= @customer.pincode%></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><ion-icon name="arrow-dropright"></ion-icon></th>
+      <td> Current Balance</td>
+      <td> <%= @customer.saving_account.total_amount%></td>
+    </tr>
+
+  </tbody>
+
+</table>
+</div>
+
+<style>
+.hello{
+text-align: center;
+margin-left: 450px;
+
+}
+</style>
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: fixed; bottom: 0px;width: 1400px;">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer>

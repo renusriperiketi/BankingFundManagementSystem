@@ -1,0 +1,87 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="display: flex; justify-content: space-between; background-color: #73a1eb;">
+  <h1 class="navbar-brand" href="", style="color:white;"><i class="fa fa-bank" style="font-size:30px;color:#faf5fa"></i><strong><strong>Bank of Innova</strong></strong></h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="Navbar">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Customers", admin_customers_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Savings Accounts", admin_savings_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Fixed Deposits", admin_fds_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Sign Out", root_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  </div>
+</nav>
+
+<style>
+.container {
+    border: 27px;
+    border-radius: 12px;
+    margin: 40px;
+    width: 300px;
+    text-align: center;
+    height: fit-content;
+    left: 525px;
+    top: 130px;
+    padding: 30px;
+    position: absolute;
+    box-shadow: 0px 0px 10px #73a1eb;
+
+}
+</style>
+<div class="container">
+    <div>
+      <h1> 
+      <%= @fixed_deposit.fixed_deposit_name%>
+      </h1>
+            Interest Plan: <%= @fixed_deposit.rate_of_interest %><br>
+            Invested Amount: <%= @fixed_deposit.total_amount %><br>
+            Tenure: <%= @fixed_deposit.tenure %>
+
+    </div>
+
+    <div>
+    <button>
+      <%= link_to "Calculate Maturity amount", fd_maturity_admin_path(customer_id: @fixed_deposit.customer.id, id: @fixed_deposit.id) %>
+    </button>
+    </div>
+
+    <div>
+    Maturity Amount: Rs.<%= @maturity_amount %> <br>
+    Interest Earned: Rs.<%= @interest_earned%>
+    </div>
+</div>
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: fixed; bottom: 0px;width: 1400px;">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer>

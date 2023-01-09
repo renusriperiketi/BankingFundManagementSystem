@@ -1,0 +1,61 @@
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="display: flex; justify-content: space-between; background-color: #73a1eb;">
+<h1 class="navbar-brand" href="", style="color:white;">
+  <%= link_to customer_path(@customer) do %>
+  <i class="fa fa-bank" style="font-size:30px;color:#faf5fa"></i>
+  <% end %>Bank of Innova</h1>  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  </div>
+</nav>
+
+<style>
+.container{
+border: 27px;
+border-radius: 12px;
+margin: 40px;
+width: 300px;
+height: 300px;
+text-align: center;
+left: 525px;
+top: 130px;
+padding: 30px;
+position: absolute;
+box-shadow: 0px 0px 10px #73a1eb;
+}
+</style>
+
+<div class="container">
+
+<h3>My Fixed Deposits</h3>
+
+
+<% if @customer.fixed_deposits.present?%>
+    
+    <% @customer.fixed_deposits.each do |fd| %>
+      <%= link_to fd.fixed_deposit_name , customer_fixed_deposit_path(id: fd)%><br>
+    <%end%>
+
+    <%= link_to "Create a new FD", new_customer_fixed_deposit_path(@customer)%>
+
+<% else %>
+  <p> "You don't have any fixed deposits!"</p>
+  <%= link_to "Create your first FD here", new_customer_fixed_deposit_path(@customer)%>
+<% end %>
+
+</div>
+
+</div>
+
+
+
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: fixed; bottom: 0px;width: 1400px;">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer>

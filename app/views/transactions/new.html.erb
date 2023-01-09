@@ -1,0 +1,18 @@
+<h1>New Transaction</h1>
+
+<%= form_for([@saving_account, @transaction]) do |f| %>
+  <%= f.hidden_field :saving_account_id, :value => @saving_account.id %>
+  <%= f.hidden_field :customer_id, :value=> @saving_account.customer_id %>
+  <%= f.label :type_of_transaction, "Choose Your Transaction:" %><br>
+  <p><%= f.select :type_of_transaction, options_for_select(Transaction.types_for_form, @transaction.type_of_transaction) %></p>
+  <%= f.label :total_amount, "Amount (Minimum is $1)" %>
+  <p> <%= f.text_field :total_amount, :placeholder => (@transaction.errors.full_messages_for(:amount).first || "Enter Amount Here")%>
+  </p>
+
+  <%= f.submit %>
+<% end %>
+<% if flash[:message] %>
+  <p><h6><%= "*#{flash[:message]}" %></h6></p>
+<% end %>
+
+<p><%= link_to "Back to Account", saving_account_path(@saving_account) %></p>

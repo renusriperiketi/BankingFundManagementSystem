@@ -1,0 +1,219 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="display: flex; justify-content: space-between; background-color: #73a1eb;z-index:1">
+  <h1 class="navbar-brand" href="", style="color:white;">
+  <%= link_to customer_path(@customer) do %>
+  <i class="fa fa-bank" style="font-size:30px;color:#faf5fa"></i>
+  <% end %>Bank of Innova</h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="Navbar">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" style="color:white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+        My accounts
+      </a>
+      <ul class="dropdown-menu" style="background-color: #73a1eb; text-align:center; color:white;">
+
+
+      <% unless @customer.saving_account.present? %>
+        <li><a class="dropdown-item"><%= link_to " Open Savings Account", new_customer_saving_account_path(@customer), class:"btn style=background-color: #73a1eb"%></a></li>
+      <% else %>
+        <li><a class="dropdown-item" style="background-color: #73a1eb;"><%= link_to " My Savings Account", customer_saving_account_path(@customer), class:"btn style=background-color: #73a1eb;color:white;"%></a></li>
+      <% end %>
+
+      <li><a class="dropdown-item"  style="background-color: #73a1eb;"><%= link_to "My Fixed Deposits", customer_fixed_deposits_path(@customer), class:"btn style=background-color: #73a1eb;color:white;"%></a></li>
+      </ul>
+    </li>
+
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Edit Profile", edit_customer_path, class: "btn style=background-color: #73a1eb; ",style:"color:white;"%>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Change password", changepassword_customer_path, class: "btn style=background-color: #73a1eb;",style:"color:white;"%>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <button type="button" class="btn style=background-color: #73a1eb;" style="color:white;margin-top:1.5px" data-bs-toggle="modal" data-bs-target="#exampleModal">Check balance</button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Current Balance</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                      <div class= "container">
+                        Saving's Account: <%= @customer.saving_account.account_number%>
+                        <br>
+                        Your current balance: Rs.<%= @customer.saving_account.total_amount%><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" style="background-color: #73a1eb;" style="color:white;" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>        
+          </div>
+        </div>        
+      </li>
+
+      <li class="nav-item active">
+        <a>
+          <%= link_to "Sign Out", root_path, class:"btn style=background-color: #73a1eb;", style:"color:white;"%>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  </div>
+</nav>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<style>
+.submit{
+  text-align: center;
+}
+.submit-btn{
+  background-color: #73a1eb;
+  color: #fff;
+  padding: 5px 18px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+}
+.modal{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.modal-backdrop{
+  position: relative;
+  --bs-backdrop-opacity: -2.5;
+}
+</style>
+
+
+<script>
+  function closeNav() {
+    if(document.getElementById("mySidebar").style.width == "250px" ){
+      document.getElementById("mySidebar").style.width = "0";    
+    }    
+  }
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  // document.getElementById("main").style.marginLeft = "250px";
+}
+</script>
+
+
+
+<div class="container-fluid" style="margin-top: -50px;">
+  <button class="navbar-toggler openbtn"  onclick="openNav()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+  <span class="navbar-toggler-icon"><ion-icon name="menu" style="width:2rem; height:2rem;"></ion-icon></span>   
+  </button>
+</div>
+
+
+
+<div id="mySidebar" class="sidebar" >
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><ion-icon name="close"  style="width:2rem; height:1.7rem;color:black; "></ion-icon></a>
+  <a style="border-radius: 5px;margin-top: 160px;">
+    <%= button_to "Credit money", credit_money_to_account_path(@customer), method: :get ,class: "submit-btn" %>
+  </a>
+  <a style="border-radius: 5px;">
+    <%= button_to "Withdraw money",withdraw_money_path(@customer), method: :get, class: "submit-btn" %>
+  </a>
+  <a style="border-radius: 5px;">
+    <%= button_to "Transfer money",transfer_money_path(@customer), method: :get, class: "submit-btn" %>
+  </a>
+</div>
+
+
+
+
+
+<div onclick="closeNav()" style="height:20vh">
+
+  <div class="text-center"style="margin-top: 150px;" >
+  Your Account Number: <%= @saving_account.account_number%><br><br>
+
+  Your email: <%= @saving_account.customer.email%><br><br>
+
+  Current balance: Rs.<%= @saving_account.total_amount%><br>
+  </div>
+</div>
+
+
+
+<style>
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #73a1eb ;opacity:0.6;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+.sidebar .closebtn {
+    position: absolute;
+    top: -3px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    margin-top: 60px;
+    right: 0px;
+
+}
+.openbtn {
+  cursor: pointer;
+}
+button, input, optgroup, select, textarea {
+    border-radius: 6px;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 0px;
+    font-size: 20px;
+}
+</style>
+
+
+<footer>
+  <div class="text-center p-3" style="background-color: #73a1eb; position: fixed; bottom: 0px;width: 1400px;z-index:1">
+    <div class="text-center">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://localhost:3000/">BankOfInnova.com</a>
+    </div>
+  </div>
+</footer>
+    
