@@ -56,25 +56,17 @@
 </style>
 <div class="container">
     <div>
-      <h1> 
-      <%= @fixed_deposit.fixed_deposit_name%>
-      </h1>
+      <h3> 
+      <%= @fixed_deposit.customer.name%></h3>
+            
+            FD name: <%= @fixed_deposit.fixed_deposit_name%><br>
+
             Interest Plan: <%= @fixed_deposit.rate_of_interest %><br>
             Invested Amount: <%= @fixed_deposit.total_amount %><br>
             Tenure: <%= @fixed_deposit.tenure %>
-
+    
     </div>
 
-    <div>
-    <button>
-      <%= link_to "Calculate Maturity amount", fd_maturity_admin_path(customer_id: @fixed_deposit.customer.id, id: @fixed_deposit.id) %>
-    </button>
-    </div>
-
-    <div>
-    Maturity Amount: Rs.<%= @maturity_amount %> <br>
-    Interest Earned: Rs.<%= @interest_earned%>
-    </div>
 </div>
 
 <footer>
